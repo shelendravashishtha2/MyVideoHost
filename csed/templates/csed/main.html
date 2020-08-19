@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		{{ subject.sub_name }} Video Lectures
+	</title>
+</head>
+<script type="text/javascript">
+	function clicked()
+	{
+		var f = document.getElementById('myid').value;
+		document.getElementById('sec2').src = f;	
+	}
+</script>
+<style type="text/css">
+	body
+	{
+		background: #201f1f;
+	}
+	#vlove
+	{
+		position: absolute;
+		height: 90%;
+		width: 90%;
+		left: 5%;
+		right: 5%;
+		top: 5%;
+		bottom:5%;
+		box-shadow: 5px 10px 18px #888888;
+	}
+	#sec1
+	{
+		position: absolute;
+		height: 100%;
+		width:300px;
+		left: 0%;
+		top: 0%;
+		bottom: 0%;
+		overflow: visible;
+		background-color:#d2d0c5; 
+		opacity: 50%;
+
+	}
+	li
+	{
+		position:relative;
+		height: 20px;
+		width:100%;
+		background-color: black;
+		font: white;
+		list-style: none;
+	}
+	#sec2
+	{
+		position: absolute;
+		height: 100%;
+		left: 0%;
+		width: 100%;
+		top: 0%;
+		right: 0%;
+		bottom: 0%;
+		overflow: visible;
+		background-color:#d2d0c5; 
+		background-color: black;	
+	}
+	a
+	{
+		color:white;
+		text-decoration: none;
+		
+	}
+	select 
+	{
+		position: relative;
+	}
+
+</style>
+<body>
+<section id = "vlove">
+	
+	<iframe id="sec2" src="" name="iframe_a" allowfullscreen></iframe>	
+<select id="myid" onclick="clicked();">
+	{% for choice in subject.video_set.all %}
+	<option value="https://web.microsoftstream.com/embed/video/{{ choice.video_link }}?autoplay=false&amp;showinfo=false" selected>
+			{{ subject.sub_name }} {{ choice.video_date }}
+	</option>
+	{% endfor %}
+</select>
+
+</section>
+</body>
+</html>
